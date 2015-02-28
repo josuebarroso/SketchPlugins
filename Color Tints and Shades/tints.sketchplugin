@@ -1,0 +1,14 @@
+#import 'paletes.js'
+
+if([selection count] != 0) {
+    var base_colour_layer = selection[0];
+    var base_colour = [[[[base_colour_layer style] fills] firstObject] color];
+    var mono_palette = createPalete(base_colour, 0.75, "tints");
+
+    drawPalete(base_colour_layer, mono_palette);
+
+} else {
+	var app = [NSApplication sharedApplication];
+	[app displayDialog:"There is no layer selected" withTitle:"Wait!"];
+	
+};
