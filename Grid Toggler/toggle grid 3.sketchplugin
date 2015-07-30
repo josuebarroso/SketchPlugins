@@ -1,0 +1,38 @@
+// The string you wanna filter by
+var myString = "grid 3"
+
+
+var doc = context.document
+    [[doc currentPage] deselectAllLayers]
+
+var page = [doc currentPage]
+var current_artboard = [page currentArtboard]
+
+
+[page deselectAllLayers]
+
+var layers;
+
+// If working in an artboard
+if (current_artboard != null) {
+	layers = [current_artboard layers]
+
+} else {
+	layers = [page children]
+
+}
+
+
+for (var i = 0; i < [layers count]; i++) {
+
+	var layer = [layers objectAtIndex:i];
+	var layerName = [layer name];
+	int length = [layerName length];
+
+  	
+  	if (layerName != "" && layerName.indexOf(myString) >= 0){
+		
+    		[layer setIsVisible:![layer isVisible]]
+
+  	}
+}

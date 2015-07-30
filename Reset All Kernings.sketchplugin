@@ -1,0 +1,21 @@
+var doc = context.document
+    [[doc currentPage] deselectAllLayers]
+
+
+// Select all layers
+var page = [doc currentPage],
+    layers = [page children]
+
+[page deselectAllLayers]
+
+var loop = [layers objectEnumerator]
+
+while (layer = [loop nextObject]) {
+
+	// Filter by TextLayers
+  	if([layer className] == "MSTextLayer") {
+    	[layer setCharacterSpacing:0]
+
+  	}
+
+}
